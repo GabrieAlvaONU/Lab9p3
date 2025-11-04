@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
 void displayRun(int values[], int size);
@@ -8,8 +10,18 @@ void displayRun(int values[], int size);
 bool hasRun(int values[], int size);
 
 int main() {
+	const int SIZE = 20;
+	int dice[SIZE];
+	srand(time(0));
 
-	int dice[20] = { 1,2,3,4,4,5,1,2,3,6,6,6,6,1,1,3,1,2,4,5 }; //test numbers
+	for (int i = 0; i < SIZE; i++) {
+		dice[i] = rand() % (6 - 1 + 1) + 1;
+	}
+	while (!hasRun(dice, SIZE)) {
+		for (int i = 0; i < SIZE; i++) {
+			dice[i] = rand() % (6 - 1 + 1) + 1;
+		}
+	}
 
 	if (hasRun(dice, 20)) {
 		cout << "Has run: ";
@@ -53,5 +65,3 @@ bool hasRun(int values[], int size) {
 	}
 	return false;
 }
-
-
