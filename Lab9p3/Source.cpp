@@ -5,9 +5,19 @@ using namespace std;
 
 void displayRun(int values[], int size);
 
-int main(){
+bool hasRun(int values[], int size);
+
+int main() {
 
 	int dice[20] = { 1,2,3,4,4,5,1,2,3,6,6,6,6,1,1,3,1,2,4,5 }; //test numbers
+
+	if (hasRun(dice, 20)) {
+		cout << "Has run: ";
+	}
+	else {
+		cout << "No run: ";
+	}
+
 	displayRun(dice, 20);
 
 
@@ -35,3 +45,13 @@ void displayRun(int values[], int size) {
 
 	}
 }
+bool hasRun(int values[], int size) {
+	for (int i = 0; i < size - 1; i++) {
+		if (values[i] == values[i + 1]) {
+			return true;
+		}
+	}
+	return false;
+}
+
+
